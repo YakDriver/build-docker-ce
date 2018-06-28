@@ -6,6 +6,7 @@ Usage (on Ubuntu system):
 
 ```
 $ sudo su
+# apt-get update
 # apt-get install git
 # git clone https://github.com/YakDriver/build-docker-ce.git
 # cd build-docker-ce
