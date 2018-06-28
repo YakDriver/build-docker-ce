@@ -11,18 +11,18 @@ if [ "$(whoami)" != "root" ]; then
 fi
 
 echo "Removing old installations..."
-apt-get remove docker docker-engine docker.io
+apt-get -y remove docker docker-engine docker.io
 
 echo "Updating repository package info..."
-apt-get update
+apt-get -y update
 
 echo "Installing linux-image-extra packages..."
-apt-get install \
+apt-get -y install \
   linux-image-extra-$(uname -r) \
   linux-image-extra-virtual
 
 echo "Installing prerequisites..."
-apt-get install \
+apt-get -y install \
   apt-transport-https \
   ca-certificates \
   curl \
@@ -46,5 +46,5 @@ add-apt-repository \
   stable"
 
 echo "Installing docker-ce"
-apt-get update
-apt-get install docker-ce
+apt-get -y update
+apt-get -y install docker-ce
