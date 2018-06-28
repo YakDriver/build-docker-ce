@@ -33,8 +33,15 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 apt-key fingerprint 0EBFCD88
 
 echo "Adding docker repository..."
+if [ "$(arch)" = "x86_64" ]; then
+  export ARCH=amd64
+else
+  echo "ERROR: You have a non-standard architecture (not x86_64)."
+  echo "You can modify this script to address your needs."
+  exit 1
+fi
 add-apt-repository \
-  "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+  "deb [arch=$ARCH] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) \
   stable"
 
